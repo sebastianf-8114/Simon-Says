@@ -1,0 +1,130 @@
+*PLEASE NOTE*
+----------------------------------------
+There is a slight bug, in which if the sequence is: {blue, red, blue, blue},
+the button will not light, dark, and light then dark the blue button (which is doing it twice) 
+The duration of it being lit, will be longer. The user needs to notice this or it will not work.
+The time in which the button goes from blue to red is faster than blue to blue.
+----------------------------------------
+
+Designs of the Classes:
+
+Following Classes Exist:
+- SimonWorld - this is where the scene is created, scene updates, and takes in user inputs
+- MtLoButton - an empty list of buttons
+- ConsLoButton - a non-empty list of buttons (used for determining light sequence and generating new buttons for light sequence)
+- Button - a class with a color and coordinate (used for the color of the light sequence and displays buttons for users to click on)
+- ExamplesSimon - class for examples, tests, and where we call big bang
+
+*-----------------------------*      
+|        SimonWorld           |
+|-----------------------------|
+| int SCENE_SIZE;             |
+|  Random rand;               |
+|  ILoButton randomButtonList;| 
+|  ILoButton lightButtonList; | 
+| Button greenButton;         |
+|  Button redButton;          |
+|  Button yellowButton;       |
+|  Button blueButton;         |
+|  boolean flashing;          |
+|  boolean justFlashed;       |
+|  boolean gameEnded;         |   
+*-----------------------------*  
+*---------------------------------------------*
+|                MtLoButton                   |
+|---------------------------------------------|
+| boolean sameLists(Button button)            |
+|  ILoButton addToEnd(Button button)          |
+|             int length()                    |
+|  Button lastButton(Button button)           |
+|            ILoButton removeLight()          |
+|  ILoButton regenerateList(ILoButton other)  |
+|       WorldImage drawFirst()                |
+|              int firstX()                   |
+|              int firstY()                   | 
+*---------------------------------------------* 
+*-----------------------------*
+|        ConsLoButton         |
+|-----------------------------|
+|        Button first;        |
+|        ILoButton rest;      |   
+*-----------------------------*      
+*-----------------------------*
+|          Button             |
+|-----------------------------|
+|       Color color;          |
+|        int x;               |
+|        int y;               | 
+*-----------------------------*      
+*-----------------------------*
+|        ExamplesSimon        |
+|-----------------------------|
+|      Examples & Testers     |
+*-----------------------------*                   
+
+
+ILoButton randomButtonList; -> - Creates a list using random and names it randomButtonList.
+
+ILoButton lightButtonList; -> - A light button list that will have the first of the randomButtonList followed by
+                                an MtLoButton. If a button exists (which it will) it will call drawLit() and then
+                                reach an MtLoButton which will return the button to its original state (dark). Then it 
+                                will remove the button and call the first on the rest of randomButtonList and recursively
+                                light it up untill it reaches an MtLoButton, which will mean the user input is next.
+                                
+boolean flashing -> Determines if the button has flashed from the randomSequence
+
+boolean justFlashed -> Check to see if the user/list has justFlashed the button
+
+boolean gameEnded -> will determine if the game is over - thus returning the new scene "game is over"
+
+boolean sameLists(Button button) -> Checks to see if the first button the generated list matches the user button
+
+ILoButton removeLight() -> will remove the light from the first and recusively do it one by one 
+                           down the list
+
+ILoButton regenerateList(ILoButton other) -> Will declare new regenerated list which creates
+                                             a new button added to the end of the original
+                                             regernated list by calling addToEnd method made
+
+WorldImage drawFirst() -> Will obtain the first button from list and darw the lit verson by returning
+                          this.first.drawLit()
+
+int firstX() -> return the x value from Button Class (for posn purposes) when clicked/lit up
+
+int firstY() -> return the y value from Button Class (for posn purposes) when clicked/lit up
+
+
+* MtLoButton * - contains all the possibilities once the end of the sequence its reached by user and random
+
+
+
+Design of Button 
+- GreenButton
+- RedButton
+- YellowButton
+- BlueButton 
+- Lighted Button -> Will call a lit version of button and its repected posn so it will light up on the right button
+                    from the generated list and user list
+                    
+
+
+Used:
+
+this.first - access list
+ 
+this.rest  - access list
+
+this - access given
+
+Random() - Random created to generate new sequence
+
+WorldImages - Return visual images
+
+
+
+
+
+
+
+
+

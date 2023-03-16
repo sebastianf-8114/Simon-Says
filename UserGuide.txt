@@ -1,0 +1,14 @@
+How to Play Simon Says:
+
+
+Once Ran:
+
+The Canvas will load up and flash a random sequence. 
+
+This will flash for 0.6 seconds. Please click on the correct order of the lights that are flashed.
+
+Note*: Please wait an 0.6 after each button flashes before pressing on a button. If you do not wait, the game will end.
+
+If you click on the wrong button, or if you ddo not wait 0.6 seconds after it darkens, the game will end.
+
+If you match the sequence of lights, another light will be added to the sequence, and the new sequence will be displayed.
